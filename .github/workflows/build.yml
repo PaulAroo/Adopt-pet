@@ -25,6 +25,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: ⛏️ Build
+      - name: 📦 install dependencies
+        run: npm ci
+
+      - name: 🔨 build
         run: npm run build
+        
+      - name: 🚀 deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4.3.0
+        with:
+          branch: gh-pages
+          folder: dist
