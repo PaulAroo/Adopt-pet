@@ -4,7 +4,6 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master ]
   pull_request:
@@ -27,6 +26,14 @@ jobs:
 
       - name: 📦 install dependencies
         run: npm ci
+        
+      - name: 🗃️ reconstitute node_modules for production
+        run: |
+          rm -rf node_modules
+          npm ci --production
+          
+      - name: 🗃️ copy node_modules
+        run: cp -r node_modules/ dist/
 
       - name: 🔨 build
         run: npm run build
