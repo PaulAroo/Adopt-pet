@@ -26,6 +26,9 @@ jobs:
 
       - name: 📦 install dependencies
         run: npm ci
+
+      - name: 🔨 build
+        run: npm run build
         
       - name: 🗃️ reconstitute node_modules for production
         run: |
@@ -34,9 +37,6 @@ jobs:
           
       - name: 🗃️ copy node_modules
         run: cp -r node_modules/ dist/
-
-      - name: 🔨 build
-        run: npm run build
         
       - name: 🚀 deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4.3.0
