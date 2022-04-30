@@ -5,9 +5,9 @@ name: CI
 # Controls when the workflow will run
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -16,7 +16,6 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -29,15 +28,20 @@ jobs:
 
       - name: 🔨 build
         run: npm run build
-        
+
       - name: 🗃️ reconstitute node_modules for production
         run: |
           rm -rf node_modules
           npm ci --production
-          
+
       - name: 🗃️ copy node_modules
         run: cp -r node_modules/ dist/
-        
+
+      - name: ✍️ write cname and nojekyll
+        run: |
+          touch .nojekyll
+          echo "adopt-pet.thrills.metalshop.dev" > CNAME
+
       - name: 🚀 deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4.3.0
         with:
