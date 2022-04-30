@@ -40,10 +40,11 @@ jobs:
       - name: ✍️ write cname and nojekyll
         run: |
           touch .nojekyll
-          echo "adopt-pet.thrills.metalshop.dev" > CNAME
+          echo "adopt-pet.metalshop.dev" > CNAME
 
       - name: 🚀 deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4.3.0
         with:
           branch: gh-pages
           folder: dist
+          single-commit: true
