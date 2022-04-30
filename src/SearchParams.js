@@ -26,7 +26,7 @@ const SearchParams = () => {
 
   async function requestPets() {
     const res = await fetch(
-      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}&page=${pageNumber}`
+      `https://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}&page=${pageNumber}`
     );
     const json = await res.json();
     localCache[pageNumber] = json.pets;
