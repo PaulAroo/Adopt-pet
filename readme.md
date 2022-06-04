@@ -3,7 +3,7 @@
 A web application that displays listing of different kinds of pet available for adoption
 Data is fetch from this [API endpoint](http://pets-v2.dev-apis.com/pets?)
 
-- Live Site URL: [Preview](https://thrills-weather-app.vercel.app/)
+- Live Site URL: [Preview](https://adopt-pet.metalshop.dev/)
 
 ### Built with
 
